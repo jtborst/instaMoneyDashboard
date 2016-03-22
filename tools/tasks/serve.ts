@@ -1,6 +1,6 @@
 import {serveSPA} from '../utils';
 
-export = function serverStart(gulp, plugins) {
+export function serve(gulp, plugins) {
   return function () {
     serveSPA();
   };

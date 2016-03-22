@@ -13,3 +13,6 @@ hs_err_pid*
 
 node_modules
 .idea
+dist
+
+tsd-debug.log

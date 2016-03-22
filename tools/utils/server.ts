@@ -4,7 +4,7 @@ import * as tinylrFn from 'tiny-lr';
 import * as openResource from 'open';
 import * as serveStatic from 'serve-static';
 import {resolve} from 'path';
-import {APP_BASE, APP_DEST, DOCS_DEST, LIVE_RELOAD_PORT, DOCS_PORT, PORT} from '../config';
+import {APP_BASE, APP_DEST, LIVE_RELOAD_PORT, PORT} from '../config';
 
 let tinylr = tinylrFn();
 
@@ -36,10 +36,6 @@ export function serveDocs() {
 
    server.use(
     APP_BASE,
-    serveStatic(resolve(process.cwd(), DOCS_DEST))
-  );
-
-   server.listen(DOCS_PORT, () =>
-    openResource('http://localhost:' + DOCS_PORT + APP_BASE)
+    serveStatic(resolve(process.cwd()))
   );
 }

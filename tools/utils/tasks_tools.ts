@@ -15,8 +15,9 @@ const TASKS_PATH = join(TOOLS_DIR, 'tasks');
 // }
 
 export function task(taskname: string, option?: string) {
-  util.log('Loading task', chalk.yellow(taskname, option || ''));
-  return require(join('..', 'tasks', taskname))(gulp, gulpLoadPlugins(), option);
+  console.log('Loading task', chalk.yellow(taskname, option || ''));
+  var func = require(join('..', 'tasks', taskname));
+  return func[taskname](gulp, gulpLoadPlugins(), option);
 }
 
 export function runSequence(...sequence: any[]) {
