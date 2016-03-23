@@ -13,6 +13,8 @@ export const APP_TITLE            = 'InstaMoney Dashboard';
 export const APP_SRC              = 'app';
 export const ASSETS_SRC           = `${APP_SRC}/assets`;
 
+export const MODULES_SRC          = 'node_modules';
+
 export const TOOLS_DIR            = 'tools';
 export const APP_DEST             = `dist`;
 export const CSS_DEST             = `${APP_DEST}/css`;

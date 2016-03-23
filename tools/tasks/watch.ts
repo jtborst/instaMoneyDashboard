@@ -6,7 +6,7 @@ import {notifyLiveReload} from '../utils';
 export function watch(plugins) {
   return function () {
     plugins.watch(join(APP_SRC, '**'), e =>
-      runSequence('build.dev', () => notifyLiveReload(e))
+      runSequence('build', () => notifyLiveReload(e))
     );
   };
 };

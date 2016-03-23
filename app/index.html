@@ -1,28 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><%= APP_TITLE %></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- inject:css -->
-  <!-- endinject -->
+
+  <title>Amazing Think Forward Future Fit Brighter Business Instant Money Transfer Dashboard!!!</title>
+
+  <link href="animate.css" rel="stylesheet">
+
+  <link href="style.min.css" rel="stylesheet">
+  <link href="globe.min.css" rel="stylesheet">
+
 </head>
+
 <body>
 
-  <app>Loading...</app>
+<div id="content-frame">
+  <div class="canvas-loader">
+    <i class="fa fa-refresh"></i>
+  </div>
+  <div id="canvas-container">
+    <div id="canvas-align">
+      <div id="globe3d"></div>
+      <div id="countryMouseOver"></div>
+    </div>
+    <div id="hud" style="display:none;">
+      <div class="zoom-buttons">
+        <div id="zoomIn"></div>
+        <div id="zoomOut"></div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="countryMarker">
+      <div class="countryMarkerPin">
+        <img src="" alt=""/>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <script>
-    System.import('bootstrap')
-      .catch(function (e) {
-        console.error(e,
-          'Report this error at https://github.com/mgechev/angular2-seed/issues');
+<div class="container-fluid centered" id="content">
+
+  <script src="jquery.js"></script>
+  <script src="jquery.validate.js"></script>
+  <script src="bmg.js"></script>
+  <script src="globe-data.js"></script>
+
+
+  <script type="text/javascript">
+    console.log("init keydownpressed");
+    var keydownPressed = false;
+    $('body').on('click', '#forum-button', function () {
+      location.href = '/Forum/';
+    });
+    $('#zoomIn').on('click', function (event) {
+      $(this).parent().addClass('zoomedIn');
+      zoomInPressed(event);
+    });
+    $('#zoomOut').on('click', function (event) {
+      $(this).parent().removeClass('zoomedIn');
+      zoomOutPressed(event);
+    });
+
+    $('body').on('click', '#aboutMegaGlobe', function () {
+      console.log('About click');
+      if (!_fallbackLoaded) {
+        disableInteraction();
+      }
+      checkLoginState(['about'], loadPopup);
+    });
+    $('body').on('click', '#pm-button', function () {
+      location.href = '/forum/page/messageinbox/';
+    });
+    $('body').on('click', '.newsFlash a', function () {
+      console.log('Newsflash click');
+      if (!_fallbackLoaded) {
+        disableInteraction();
+      }
+      checkLoginState([$(this).attr('id')], loadNewsFlash);
+    });
+
+    $('body').on('click', ".globeLink, .globeLink-tabs", function () {
+      countryOpen = false;
+      $('.globeLink').fadeOut();
+      if (!_fallbackLoaded) {
+        console.log("no fallback release WebGL");
+        releaseFocus();
+        $('#globe3d').animate({
+          position: "relative",
+          top: "0px"
+        }, 500, function () {
+          checkLoginState(['globe'], loadView);
+        });
+      } else {
+        $('#selectCountryBox').hide();
+        checkLoginState(['globe'], loadView);
+      }
+      $('#zoomOut').parent().removeClass('zoomedIn');
+      $('#countryInput option[value="default"], #countryInputFallback option[value="default"]').prop('disabled', false);
+      $('#countryInput, #countryInputFallback').val('default');
+      $('#countryInput, #countryInputFallback').selectpicker('refresh');
+      $('.wrapper-tabs').removeClass('isFixed').prependTo('#country');
+    });
+
+    $('document').ready(function () {
+      if (window !== top) top.location = window.location;
+
+
+      loadView('globe');
+
+
+      $('#logOutLink').on('click', function () {
+        checkLoginState(['/umbraco/Surface/Member/Logout'], logOutMember);
       });
+
+
+      initInIdleMode(function () {
+        $('#content-frame .canvas-loader').hide();
+      });
+    });
   </script>
 
-  <!-- inject:js -->
-  <!-- endinject -->
+  <script type="text/javascript">
+
+
+    $("#registerLink").on('click', function () {
+      loadViewOnController('Account', 'Index');
+    });
+
+    $(".button-reset").on('click', function () {
+      loadViewOnController('Account', 'ForgotPassword');
+    });
+
+    var validator = $("#loginForm").validate({
+      rules: {
+        UserName: {
+          required: true,
+          regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+        },
+        Password: {
+          required: true,
+          minlength: 8,
+          maxlength: 15,
+          regex: /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9@*#]).{3,15})$/
+        }
+      },
+      messages: {
+        UserName: {
+          required: "Username is required",
+          minlength: $.validator.format("Enter at least {0} characters"),
+          regex: ("Not a valid emailadres")
+        },
+        Password: {
+          required: "Password is required",
+          minlength: $.validator.format("Enter at least {0} characters"),
+          regex: ("Use uppercase, lowercase and number combination")
+        }
+      },
+      errorPlacement: function (error, element) {
+        element.next().find('.feedback-error-message').html(error);
+      }
+    });
+
+    $(document).ready(function () {
+      $('.form-control').each(function () {
+        $(this).on('keyup', function () {
+          if (!validator.element($(this))) {
+            $(this).closest('.form-group').addClass("has-error has-feedback");
+          } else {
+            $(this).closest('.form-group').removeClass("has-error has-feedback");
+          }
+        });
+      });
+
+      $(".button-submit").on('click', function () {
+        $("#response-block").hide();
+        $('.form-group').removeClass('has-error has-feedback');
+        $('.input-group').removeClass('is-validated');
+
+        $('.form-control').each(function () {
+          if (!validator.element($(this))) {
+            $(this).closest('.form-group').addClass("has-error has-feedback");
+          } else {
+            $(this).closest('.input-group').addClass("is-validated");
+          }
+        });
+
+        validator.form();
+
+        if ($("#loginForm").valid()) {
+          Login();
+        }
+      });
+
+      setTimeout(function () {
+        $(".box-wrapper").fadeIn();
+      }, 500);
+
+    });
+
+    function Login() {
+      $.ajax({
+        type: "POST",
+        url: '/umbraco/Surface/Member/Login',
+        data: $("#loginForm").serialize(),
+        success: function (data, textStatus, jqXhr) {
+          var message = $("#response-block");
+          message.removeClass("alert-success alert-danger");
+          message.show();
+
+          if (data.Result === "success") {
+            message.addClass("alert-success");
+            message.html('<i class="fa fa-check"></i>' + data.Message);
+            $.ajax({
+              method: "POST",
+              url: "/Umbraco/Surface/Member/ReloadNavAfterLogin"
+            }).success(function (navbar) {
+              $('.navbar').html(navbar);
+            });
+            checkLoginState(['globe'], loadView);
+          } else if (data.Result === "unknown") {
+            message.addClass("alert-danger");
+            message.html('<i class="fa fa-check"></i>' + data.Message);
+            loadViewOnControllerWithParam("Account", "Disclaimer", "Email", data.Parameter.Email);
+            //checkLoginState(["Account", "Disclaimer", "Email", data.Parameter.Email], loadViewOnControllerWithParam);
+          } else {
+            message.addClass("alert-danger");
+            message.html('<i class="fa fa-times"></i>' + data.Message);
+          }
+        }
+      });
+    }
+  </script>
+
 
 </body>
 </html>

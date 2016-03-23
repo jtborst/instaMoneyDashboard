@@ -1,14 +1,19 @@
 import {join, sep} from 'path';
-import {APP_SRC, APP_DEST, DEPENDENCIES} from '../config';
+import {APP_SRC, APP_DEST, DEPENDENCIES, MODULES_SRC} from '../config';
 import {transformPath, templateLocals} from '../utils';
 
 export function build(gulp, plugins) {
   return function () {
-    return gulp.src(join(APP_SRC, 'index.html'))
-      // NOTE: There might be a way to pipe in loop.
-      .pipe(inject('libs'))
-      .pipe(inject())
-      .pipe(plugins.template(templateLocals()))
+    return gulp.src([
+        join(APP_SRC, 'index.html'),
+        join(APP_SRC, 'js', '**'),
+        join(APP_SRC, 'css', '**'),
+        join(APP_SRC, 'img', '**'),
+        join(APP_SRC, 'webgl', '**'),
+        join(MODULES_SRC, 'jquery', 'dist', 'jquery.js'),
+        join(MODULES_SRC, 'jquery-validation', 'dist', 'jquery.validate.js')
+      ])
+      // .pipe(plugins.template(templateLocals()))
       .pipe(gulp.dest(APP_DEST));
   };
 
