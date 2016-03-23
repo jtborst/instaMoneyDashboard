@@ -13,8 +13,8 @@
 //                createSelects(data);
 //            });
 //        } else {
-            createSelects(window.loadedCountries);
-            createSelects([]);
+            createSelects(getDummyCountries());
+//            createSelects([]);
 //        }
 
 
@@ -22,7 +22,7 @@
 
     function createSelects(data) {
 //        $('#content').hide();
-//        countryMapping = mapCountries(data);
+        countryMapping = mapCountries(data);
 
 //        var $select = $('#countryInput');
 //        $select.empty();
