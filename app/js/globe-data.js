@@ -64,13 +64,14 @@ var dummyCountries = [{"name":"Australia","countryCode":"AU","countryId":2,"coun
         {"name":"On the way to Australia","countryCode":"Step19","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"}];
 
 function startAnimate() {
-   setActive(2);
+   restoreSegment(2);
+   setActiveSegment(2);
    setTimeout(function() {switchToActive(3);}, 500);
 }
 
 function switchToActive(i) {
-    _countryInfo[i - 1].countryFlag = 'country_step.png';
-    setActive(i);
+    restoreSegment(i - 1);
+    setActiveSegment(i);
     if (i < dummyCountries.length - 1) {
         setTimeout(function () {
             switchToActive(i + 1);
@@ -78,16 +79,21 @@ function switchToActive(i) {
     } else {
         setTimeout(function() {
             _countryInfo[dummyCountries.length - 1].countryFlag = 'country_step.png';
-            removeCountryFlags();
-            displayCountryFlags();
+            restoreSegment(i);
         }, 500);
     }
 }
 
-function setActive(i) {
-    _countryInfo[i].countryFlag = 'country_step_active.png';
-    removeCountryFlags();
-    displayCountryFlags();
+function restoreSegment(i) {
+    _3dGroupCountries.remove(_countryInfo[i].model);
+    _countryInfo[i].countryFlag = 'country_step.png';
+    addCountryFlagSprite(i);
+}
+
+function setActiveSegment(i) {
+    _3dGroupCountries.remove(_countryInfo[i].model);
+    _countryInfo[i].countryFlag = 'money.png';
+    addCountryFlagSprite(i);
 }
 
 function initWithLocalData() {
@@ -250,7 +256,7 @@ function enableMouseEvents() {
     _mouseEventsDisabled && (_mouseEventsDisabled = !1)
 }
 function displayCountryFlags() {
-    for (var n = 0; n < _countryInfo.length; n++)_countryInfo[n].isActive == "TRUE" && addCountryFlagSprite(_countryInfo[n])
+    for (var n = 0; n < _countryInfo.length; n++)_countryInfo[n].isActive == "TRUE" && addCountryFlagSprite(n)
 }
 function removeCountryFlags() {
     if (_3dGroupCountries)for (var n = _3dGroupCountries.children.length - 1; n >= 0; n--)_3dGroupCountries.remove(_3dGroupCountries.children[n]);
@@ -263,7 +269,8 @@ function processCountries(n) {
         name: ""
     }, i.visible = !1)
 }
-function addCountryFlagSprite(n) {
+function addCountryFlagSprite(index) {
+    var n = _countryInfo[index];
     var t = n.countryCode.toLowerCase(), u = n.countryFlag, i = _countryObj3dLookup[t], r;
     if (i == undefined) {
         console.log("Failed to add flag sprite for country", t);
@@ -279,7 +286,7 @@ function addCountryFlagSprite(n) {
         }), i = new THREE.Sprite(s), e, o, r, f, u;
         i.name = "flag_" + t;
         e = _countryObj3dLookup[t];
-        e == undefined ? _debug3dIsEnabled && console.log("Failed to add sprite for country " + t) : (o = e.obj3d, r = new THREE.Object3D, r.name = "FlagGroup_" + t, f = new THREE.Object3D, f.name = "ZoomScale", f.add(i), r.add(f), u = new THREE.Vector3, u.setFromMatrixPosition(o.matrixWorld), _3dGroupCountries.worldToLocal(u), i.scale.x = i.scale.y = i.scale.z = .01, r.position.x = .94 * u.x, r.position.y = .94 * u.y, r.position.z = .94 * u.z, _3dGroupCountries.add(r), _countrySprites.push(i), animatePopUpCountrySprite(i))
+        e == undefined ? _debug3dIsEnabled && console.log("Failed to add sprite for country " + t) : (o = e.obj3d, r = new THREE.Object3D, r.name = "FlagGroup_" + t, f = new THREE.Object3D, f.name = "ZoomScale", f.add(i), r.add(f), u = new THREE.Vector3, u.setFromMatrixPosition(o.matrixWorld), _3dGroupCountries.worldToLocal(u), i.scale.x = i.scale.y = i.scale.z = .01, r.position.x = .94 * u.x, r.position.y = .94 * u.y, r.position.z = .94 * u.z, _3dGroupCountries.add(r), _countryInfo[index].model = r, _countrySprites.push(i), animatePopUpCountrySprite(i))
     };
     THREE.ImageUtils.loadTexture(u, {}, r)
 }
