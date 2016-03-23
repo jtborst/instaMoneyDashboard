@@ -41,15 +41,55 @@ function hideFlagLabelDocElement() {
     n.style.left = "-100px";
     n.style.top = "-100px"
 }
-function getDummyCountryJSON() {
-    return JSON.stringify(getDummyCountries());
-}
-function getDummyCountries() {
-    return [{"name":"Australia","countryCode":"AU","countryId":2,"countryFlag":"country_AU.png","isActive":"TRUE"},
+var dummyCountries = [{"name":"Australia","countryCode":"AU","countryId":2,"countryFlag":"country_AU.png","isActive":"TRUE"},
         {"name":"Netherlands","countryCode":"NL","countryId":1,"countryFlag":"country_NL.png","isActive":"TRUE"},
-        {"name":"","countryCode":"Step1","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
-        {"name":"","countryCode":"Step19","countryId":4,"countryFlag":"country_step.png","isActive":"TRUE"}];
+        {"name":"On the way to Australia","countryCode":"Step1","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step2","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step3","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step4","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step5","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step6","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step7","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step8","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step9","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step10","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step11","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step12","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step13","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step14","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step15","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step16","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step17","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step18","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"},
+        {"name":"On the way to Australia","countryCode":"Step19","countryId":3,"countryFlag":"country_step.png","isActive":"TRUE"}];
+
+function startAnimate() {
+   setActive(2);
+   setTimeout(function() {switchToActive(3);}, 500);
 }
+
+function switchToActive(i) {
+    _countryInfo[i - 1].countryFlag = 'country_step.png';
+    setActive(i);
+    if (i < dummyCountries.length - 1) {
+        setTimeout(function () {
+            switchToActive(i + 1);
+        }, 500);
+    } else {
+        setTimeout(function() {
+            _countryInfo[dummyCountries.length - 1].countryFlag = 'country_step.png';
+            removeCountryFlags();
+            displayCountryFlags();
+        }, 500);
+    }
+}
+
+function setActive(i) {
+    _countryInfo[i].countryFlag = 'country_step_active.png';
+    removeCountryFlags();
+    displayCountryFlags();
+}
+
 function initWithLocalData() {
     var t = getDummyCountryJSON(), n = function (n, t) {
         console.log(" -->", (new Date).toISOString(), "succes:", "resolution:", t)
@@ -201,7 +241,7 @@ function startTransitionFromIdleToActive(n) {
     _countryInfo = JSON.parse(n);
     removeCountryFlags();
     displayCountryFlags();
-    enableInteraction()
+    enableInteraction();
 }
 function disableMouseEvents() {
     _mouseEventsDisabled || (_mouseEventsDisabled = !0)

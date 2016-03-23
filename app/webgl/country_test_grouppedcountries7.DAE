@@ -18201,72 +18201,154 @@
   <library_visual_scenes>
     <visual_scene id="country_test_grouppedcountries7" name="country_test_grouppedcountries7">
       <node name="countries_container" id="countries_container" layer="Layer005" sid="countries_container"><matrix sid="matrix">1.000000 0.000000 0.000000 0.156494 0.000000 0.000000 1.000000 0.000000 0.000000 -1.000000 0.000000 -0.625977 0.000000 0.000000 0.000000 1.000000</matrix><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra><node name="bigbox" id="bigbox" layer="Layer005" sid="bigbox"><matrix sid="matrix">1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000002 0.000000 0.000000 1.000000 -50.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#bigbox-lib"/><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node><node name="Center_Object" id="Center_Object" layer="Layer005" sid="Center_Object"><matrix sid="matrix">1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000002 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#Center_Object-lib"/><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+
           <node name="country_NL" id="country_NL" layer="Layer005" sid="country_NL">
             <matrix sid="matrix">
-                0 0 0 2.70
-                0 0 0 -27.61
-                0 0 0 36.63
+                0 0 0 2.40
+                0 0 0 -27.95
+                0 0 0 36.39
                 0 0 0 1
-            </matrix>
-            <instance_geometry url="#country_NL-lib">
-                <bind_material>
-                    <technique_common>
-                        <instance_material symbol="_20 - Default" target="#_20 - Default"/>
-                    </technique_common>
-                </bind_material>
-            </instance_geometry>
-            <extra>
-                <technique profile="FCOLLADA">
-                    <visibility>1.000000</visibility>
-                </technique>
-            </extra>
-          </node>
-        <node name="country_Step1" id="country_Step1" layer="Layer005" sid="country_Step1">
-          <matrix sid="matrix">
-                0 0 0 2.70
-                0 0 0 -27.61
-                0 0 0 56.63
-                0 0 0 1
-          </matrix>
-          <instance_geometry url="#country_NL-lib">
-              <bind_material>
-                  <technique_common>
-                      <instance_material symbol="_20 - Default" target="#_20 - Default"/>
-                  </technique_common>
-              </bind_material>
-          </instance_geometry>
-          <extra>
-              <technique profile="FCOLLADA">
-                  <visibility>1.000000</visibility>
-              </technique>
-          </extra>
-        </node>
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>10</visibility></technique></extra></node>
 
-          <node name="country_Step19" id="country_Step19" layer="Layer005" sid="country_Step19">
-            <matrix sid="matrix">
-                0 0 0 30.28
-                0 0 0 29.68
-                0 0 0 -17.70
+        <node name="country_Step1" layer="Layer005"><matrix sid="matrix">
+                0 0 0 6.50
+                0 0 0 -30.02
+                0 0 0 34.18
                 0 0 0 1
-            </matrix>
-            <instance_geometry url="#country_AU-lib">
-                <bind_material>
-                    <technique_common>
-                        <instance_material symbol="_20 - Default" target="#_20 - Default"/>
-                    </technique_common>
-                </bind_material>
-            </instance_geometry>
-            <extra>
-                <technique profile="FCOLLADA">
-                    <visibility>1.000000</visibility>
-                </technique>
-            </extra>
-        </node>
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step2" layer="Layer005"><matrix sid="matrix">
+                0 0 0 11.1
+                0 0 0 -31.29
+                0 0 0 31.77
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step3" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 16.03
+                0 0 0 -31.67
+                0 0 0 29.19
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step4" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 21.1
+                0 0 0 -31.1
+                0 0 0 26.43
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step5" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 26.14
+                0 0 0 -29.57
+                0 0 0 23.53
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step6" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 30.94
+                0 0 0 -27.09
+                0 0 0 20.5
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step7" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 35.32
+                0 0 0 -23.73
+                0 0 0 17.35
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step8" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 39.11
+                0 0 0 -19.57
+                0 0 0 14.1
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step9" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 42.17
+                0 0 0 -14.73
+                0 0 0 10.78
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step10" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 44.37
+                0 0 0 -9.39
+                0 0 0 7.39
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step11" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 45.63
+                0 0 0 -3.7
+                0 0 0 3.96
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step12" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 45.9
+                0 0 0 2.15
+                0 0 0 0.5
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step13" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 45.16
+                0 0 0 7.96
+                0 0 0 -2.95
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step14" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 43.44
+                0 0 0 13.54
+                0 0 0 -6.39
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step15" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 40.81
+                0 0 0 18.71
+                0 0 0 -9.79
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step16" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 37.36
+                0 0 0 23.3
+                0 0 0 -13.14
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step17" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 33.23
+                0 0 0 27.16
+                0 0 0 -16.41
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step18" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 28.57
+                0 0 0 30.19
+                0 0 0 -19.59
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+        <node name="country_Step19" layer="Layer005" ><matrix sid="matrix">
+                0 0 0 23.55
+                0 0 0 32.29
+                0 0 0 -22.66
+                0 0 0 1
+          </matrix><instance_geometry url="#country_NL-lib"><bind_material><technique_common><instance_material symbol="_20 - Default" target="#_20 - Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1</visibility></technique></extra></node>
+
+
           <node name="country_AU" id="country_AU" layer="Layer005" sid="country_AU">
             <matrix sid="matrix">
-                0 0 0 32.28
-                0 0 0 27.49
-                0 0 0 -17.70
+                0 0 0 18.38
+                0 0 0 33.44
+                0 0 0 -25.61
                 0 0 0 1
             </matrix>
             <instance_geometry url="#country_AU-lib">
